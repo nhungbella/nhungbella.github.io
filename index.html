@@ -1,28 +1,54 @@
-<p style="font-size:30">Hello</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <p style="font-size:30">Hello</p>
+        <script>
+          // Hàm khởi tạo đồng hồ
+          function startTime()
+          {
+               
+          }
+           
+          // Hàm này có tác dụng chuyển những số bé hơn 10 thành dạng 01, 02, 03, ...
+          function checkTime(i)
+          {
+               
+          }
+        </script>
+        <script>
+            function startTimer(duration, display) {
+                var timer = duration, minutes, seconds;
+                setInterval(function () {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
 
-<script>
-function startTimer(duration, display) {
-    var timer = duration, minutes, seconds;
-    setInterval(function () {
-        minutes = parseInt(timer / 60, 10);
-        seconds = parseInt(timer % 60, 10);
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
+                    display.textContent = minutes + ":" + seconds;
 
-        display.textContent = minutes + ":" + seconds;
+                    if (--timer < 0) {
+                        timer = duration;
+                    }
+                }, 1000);
+            }
 
-        if (--timer < 0) {
-            timer = duration;
-        }
-    }, 1000);
-}
+            window.onload = function () {
+                var fiveMinutes = 60 * 10,
+                    display = document.querySelector('#times');
+                startTimer(fiveMinutes, display);
+            };
+         </script>
+    </head>
+    <body onload="startTime()">
+ 
+        <div id="timer"></div>
+        <div>Registration closes in <span id="times">10:00</span> minutes!</div>
+ 
+    </body>
+</html>
 
-window.onload = function () {
-    var fiveMinutes = 60 * 10,
-        display = document.querySelector('#times');
-    startTimer(fiveMinutes, display);
-};
-</script>
 
-<div>Registration closes in <span id="times">10:00</span> minutes!</div>
+
+
+
